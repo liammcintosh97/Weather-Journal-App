@@ -1,0 +1,59 @@
+.input-container{
+  display: flex;
+  flex-direction: column;
+  grid-area: in;
+}
+
+.input-container label,input{
+  display: block;
+}
+
+.input-container label{
+  margin-bottom: 5px;
+}
+
+/*Zip Input*/
+
+.zip-container{
+  width:100%;
+  margin-bottom: 15px;
+}
+
+#zip{
+  box-sizing: border-box;
+  width: 100%;
+  border: unset;
+  box-shadow: inset 0px 0px 3px 1px #222733;
+  border-radius: 3px;
+  color: #5f6166;
+  padding: 5px;
+  background-color: #eef3ff;
+  font-family: Georgia;
+  font-size: 14px;
+}
+
+/*Feeling Input*/
+
+.feeling-container{
+  height: 100%;
+}
+
+.feeling-input{
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: unset;
+  box-shadow: inset 0px 0px 3px 1px #222733;
+  border-radius: 3px;
+  color: #5f6166;
+  padding: 5px;
+  background-color: #eef3ff;
+  font-family: Georgia;
+  font-size: 14px;
+}
+
+
+
+
+
