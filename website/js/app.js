@@ -1,6 +1,5 @@
 const baseSeverURL = "http://localhost"
 const serverPort = ":8000"
-const openWeatherAPIKey = "2d39eb838f771003b25db8e0d8ed2308";
 
 let generateButton;
 let zipCodeInput;
@@ -103,7 +102,7 @@ function GetTodaysDate(){
 }
 
 async function GetWeather(zipCode,countryCode){
-  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${openWeatherAPIKey}&units=metric`
+  const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${apiKeys.openWeather}&units=metric`
 
   const response = await fetch(url);
 
