@@ -8,18 +8,6 @@ let dateValue;
 let tempValue;
 let contentValue;
 
-/*
-PostData(`${baseSeverURL}${serverPort}/postData`,{test: "Hello World"}).then( data =>{
-
-  console.log(`This is the returned data from the PostData function: ${JSON.stringify(data)}`)
-  GetData(`${baseSeverURL}${serverPort}/getData`).then(data =>{
-    console.log(`This is the returned data from the GetData function: ${JSON.stringify(data)}`)
-  })
-
-})
-
-GetWeather("2359","AU");*/
-
 function Start(){
 
   InitElements();
@@ -38,16 +26,18 @@ function Generate(){
       const _temp = res.main.temp;
       const _date = GetTodaysDate()
 
-      PostData(`${baseSeverURL}${serverPort}/postData`,{
-        temp: _temp,
-        date: _date,
-        zipCode: zipCodeInput.value,
-        feelings: feelingTextArea.value
-      }).then((res =>{
-        GetData(`${baseSeverURL}${serverPort}/getData`).then(data =>{
+      GetData(`${baseSeverURL}${serverPort}/getData`).then(data =>{
+        data.push({
+          temp: _temp,
+          date: _date,
+          zipCode: zipCodeInput.value,
+          feelings: feelingTextArea.value
+        })
+
+        PostData(`${baseSeverURL}${serverPort}/postData`,data).then((data =>{
           UpdateUI(data);
-        });
-      }));
+        }));
+      });
     });
   }
 }
@@ -57,9 +47,9 @@ function UpdateUI(_data){
   if(_data.length === 0)return;
 
   var latestEntry = _data[_data.length-1];
-  dateValue.innerText = latestEntry.date;
-  tempValue.innerText = latestEntry.temp;
-  contentValue.innerText = `Your Zipcode is ${latestEntry.zipCode} and you are feeling ${latestEntry.feelings}`;
+  dateValue.innerHTML = latestEntry.date;
+  tempValue.innerHTML = latestEntry.temp;
+  contentValue.innerHTML = `Your Zipcode is ${latestEntry.zipCode} and you are feeling ${latestEntry.feelings}`;
 }
 
 function InitElements(){

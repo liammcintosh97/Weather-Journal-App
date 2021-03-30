@@ -18,14 +18,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 /* Routing */
-const projectData = [];
+let projectData = [];
 
 app.get("/getData", (req,res)=>{
   res.send(projectData);
 });
 
 app.post("/postData",(req,res)=>{
-  projectData.push(req.body);
+  projectData = req.body
   console.log(projectData);
   res.send(projectData);
 })

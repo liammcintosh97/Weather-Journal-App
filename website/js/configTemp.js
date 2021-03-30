@@ -1,0 +1,3 @@
+var apiKeys = {
+  openWeather: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+}
